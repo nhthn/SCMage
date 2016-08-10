@@ -29,16 +29,16 @@ void SCMageAsyncInit_cleanup(World* world, void* cmdData) {
     RTFree(world, cmdData);
 }
 
+static int counter = 0; // so that I can distinguish the posts when the post window scrolls...
+
 bool SCMageAsyncMain_run(World* world, CmdData* cmdData) {
     SCMage* unit = cmdData->unit;
+    counter++;
+    printf("SCMageAsyncMain_run start %d\n", counter);
     unit->state = SCMageBusy;
-    if (unit->mage->popLabel()) {
-        unit->mage->prepareModel();
-        unit->mage->computeDuration();
-        unit->mage->computeParameters();
-        unit->mage->optimizeParameters();
-    }
+    unit->mage->run();
     unit->state = SCMageDone;
+    printf("SCMageAsyncMain_run end %d\n", counter);
     return true;
 }
 
@@ -270,8 +270,8 @@ void SCMage_Ctor(SCMage* unit) {
         "", // command name (not used)
         (void*)cmdData, // command data, cast to void*
         (AsyncStageFn)SCMageAsyncInit_run, // stage 2, NRT
-        (AsyncStageFn)NULL, // stage 3, RT (not used)
-        NULL, // stage 4, NRT (not use)
+        NULL, // stage 3, RT (not used)
+        NULL, // stage 4, NRT (not used)
         (AsyncFreeFn)SCMageAsyncInit_cleanup, // cleanup function
         0, // completion message size (not used)
         0 // completion message data (not used)
@@ -296,8 +296,8 @@ void SCMage_next(SCMage* unit, int inNumSamples) {
             "", // command name (not used)
             (void*)cmdData, // command data, cast to void*
             (AsyncStageFn)SCMageAsyncMain_run, // stage 2, NRT
-            (AsyncStageFn)NULL, // stage 3, RT (not used)
-            NULL, // stage 4, NRT (not use)
+            NULL, // stage 3, RT (not used)
+            NULL, // stage 4, NRT (not used)
             (AsyncFreeFn)SCMageAsyncMain_cleanup, // cleanup function
             0, // completion message size (not used)
             0 // completion message data (not used)
@@ -311,7 +311,8 @@ void SCMage_next(SCMage* unit, int inNumSamples) {
 }
 
 void SCMage_Dtor(SCMage* unit) {
-    delete unit->mage;
+    printf("SCMage_Dtor %d\n", counter);
+    //delete unit->mage;
 }
 
 void SCMage_addVoice(Unit* unit, sc_msg_iter* args) {
