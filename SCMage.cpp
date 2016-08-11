@@ -48,7 +48,8 @@ static void SCMage_addVoice(SCMage* unit, sc_msg_iter* msg);
 void SCMage_Ctor(SCMage* unit) {
     unit->mage = new MAGE::Mage();
 
-    // lmao
+    // extremely silly
+    // I don't have any facilities for loading label files at the moment, using this for testing
     unit->mage->pushLabel(MAGE::Label("x^x-pau+ae=l@x_x/A:0_0_0/B:x-x-x@x-x&x-x#x-x$x-x!x-x;x-x|x/C:1+1+2/D:0_0/E:x+x@x+x&x+x#x+x/F:content_2/G:0_0/H:x=x^1=10|0/I:19=12/J:79+57-10"));
     unit->mage->pushLabel(MAGE::Label("x^pau-ae+l=ax@1_2/A:0_0_0/B:1-1-2@1-2&1-19#1-10$1-5!0-2;0-8|ae/C:0+0+2/D:0_0/E:content+2@1+12&1+6#0+2/F:aux_1/G:0_0/H:19=12^1=10|L-H%/I:3=3/J:79+57-10"));
     unit->mage->pushLabel(MAGE::Label("pau^ae-l+ax=s@2_1/A:0_0_0/B:1-1-2@1-2&1-19#1-10$1-5!0-2;0-8|ae/C:0+0+2/D:0_0/E:content+2@1+12&1+6#0+2/F:aux_1/G:0_0/H:19=12^1=10|L-H%/I:3=3/J:79+57-10"));
