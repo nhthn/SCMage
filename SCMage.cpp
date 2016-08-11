@@ -4,14 +4,9 @@
 
 static InterfaceTable *ft;
 
-enum SCMageState {
-    SCMageBusy,
-    SCMageDone
-};
-
 struct SCMage : public Unit {
     MAGE::Mage *mage;
-    SCMageState state;
+    bool mageIsBusy;
 };
 
 // Data shared between RT and NRT threads.
@@ -35,9 +30,9 @@ bool SCMageAsyncMain_run(World* world, CmdData* cmdData) {
     SCMage* unit = cmdData->unit;
     counter++;
     printf("SCMageAsyncMain_run start %d\n", counter);
-    unit->state = SCMageBusy;
+    unit->mageIsBusy = true;
     unit->mage->run();
-    unit->state = SCMageDone;
+    unit->mageIsBusy = false;
     printf("SCMageAsyncMain_run end %d\n", counter);
     return true;
 }
@@ -277,7 +272,7 @@ void SCMage_Ctor(SCMage* unit) {
         0 // completion message data (not used)
     );
 
-    unit->state = SCMageDone;
+    unit->mageIsBusy = false;
 
     SETCALC(SCMage_next);
     SCMage_next(unit, 1);
@@ -287,7 +282,7 @@ void SCMage_next(SCMage* unit, int inNumSamples) {
     float *out = OUT(0);
 
     // Pretty sure Mage::ready() is a reasonably real-time-safe function.
-    if (unit->state == SCMageDone && unit->mage->ready()) {
+    if (!unit->mageIsBusy && unit->mage->ready()) {
         CmdData* cmdData = (CmdData*)RTAlloc(unit->mWorld, sizeof(CmdData));
         cmdData->unit = unit;
         DoAsynchronousCommand(
