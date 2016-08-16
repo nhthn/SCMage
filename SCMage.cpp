@@ -139,12 +139,7 @@ void SCMage_Dtor(SCMage* unit) {
     RTFree(unit->mWorld, unit->mage);
 }
 
-void SCMage_addVoice(Unit* unit, sc_msg_iter* args) {
-    printf("wahhh\n");
-}
-
 PluginLoad(SCMageUGens) {
     ft = inTable;
     DefineDtorUnit(SCMage);
-    DefineUnitCmd("SCMage", "addVoice", SCMage_addVoice);
 }
