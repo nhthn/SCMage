@@ -1,6 +1,6 @@
-## SCMage ##
+## SCMage - EARLY STAGE OF DEVELOPMENT - DO NOT USE! ##
 
-A SuperCollider plugin wrapping the MAGE speech synthesizer. Currently in a very early stage of development, **NOT USABLE!**
+A SuperCollider plugin wrapping the MAGE speech synthesizer.
 
 ### Building and installing ###
 

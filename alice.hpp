@@ -1,11 +1,3 @@
-#include "mage.h"
-#include "SC_PlugIn.h"
-
-struct SCMage : public Unit {
-    MAGE::Mage* mage;
-    bool mageIsBusy;
-};
-
 void SCMage_alice(SCMage* unit) {
     // extremely silly
     // I don't have any facilities for loading label files at the moment, using this for testing

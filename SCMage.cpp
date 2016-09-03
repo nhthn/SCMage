@@ -1,15 +1,8 @@
 #include <string>
-#include "SC_PlugIn.h"
-#include "mage.h"
-#include "alice.h"
+#include "SCMage.hpp"
+#include "alice.hpp"
 
 static InterfaceTable *ft;
-
-/*
-struct SCMage : public Unit {
-    MAGE::Mage* mage;
-    bool mageIsBusy;
-};*/
 
 // Data shared between RT and NRT threads.
 struct CmdData {
