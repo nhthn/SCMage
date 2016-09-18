@@ -14,7 +14,9 @@ struct CmdData {
 
 bool SCMageAsyncInit_stage2NRT(World* world, CmdData* cmdData) {
     SCMage* unit = cmdData->unit;
+    unit->mageIsBusy = true;
     unit->mage->addEngine("slt", "/home/nathan/git/mage/data/configFiles/cmu-artic/slt.conf");
+    unit->mageIsBusy = false;
     return true;
 }
 
@@ -96,7 +98,7 @@ void SCMage_Ctor(SCMage* unit) {
 void SCMage_next(SCMage* unit, int inNumSamples) {
     float *out = OUT(0);
 
-    // Pretty sure Mage::ready() is a reasonably real-time-safe function.
+    // Pretty sure Mage::ready() is a real-time-safe function.
     if (!unit->mageIsBusy && unit->mage->ready()) {
         CmdData* cmdData = (CmdData*)RTAlloc(unit->mWorld, sizeof(CmdData));
         cmdData->unit = unit;
