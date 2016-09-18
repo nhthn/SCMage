@@ -3,5 +3,5 @@
 
 struct SCMage : public Unit {
     MAGE::Mage* mage;
-    bool mageIsBusy;
+    pthread_t thread;
 };
