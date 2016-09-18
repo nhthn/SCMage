@@ -5,13 +5,9 @@
 
 static InterfaceTable *ft;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Plugin wrapper
-
 static void SCMage_next(SCMage* unit, int inNumSamples);
 static void SCMage_Ctor(SCMage* unit);
-static void SCMage_addVoice(SCMage* unit, sc_msg_iter* msg);
-void* SCMage_genThread(void * argv);
+static void* SCMage_genThread(void* argv);
 
 void SCMage_Ctor(SCMage* unit) {
     void* mem = RTAlloc(unit->mWorld, sizeof(MAGE::Mage));
