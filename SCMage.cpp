@@ -48,6 +48,7 @@ void* SCMage_genThread(void* argv) {
         pthread_testcancel();
         if (unit->mage->ready()) {
             unit->mage->run();
+            usleep(100);
         } else {
             usleep(100);
         }
