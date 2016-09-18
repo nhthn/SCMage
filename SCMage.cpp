@@ -47,19 +47,7 @@ void* SCMage_genThread(void* argv) {
     while (1) {
         pthread_testcancel();
         if (unit->mage->ready()) {
-            if (unit->mage->popLabel()) {
-                // prepare the model
-                unit->mage->prepareModel();
-                // compute the corresponding durations taking into account the model
-                // and if set, the interpolation and/or duration functions set by the user
-                unit->mage->computeDuration();
-                // compute the corresponding parameters taking into account the model
-                // and if set, the interpolation and/or duration functions set by the user
-                unit->mage->computeParameters();
-                // optimize the generated parameters
-                unit->mage->optimizeParameters();
-                usleep(100);
-            }
+            unit->mage->run();
         } else {
             usleep(100);
         }
