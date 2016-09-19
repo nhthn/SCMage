@@ -9,51 +9,9 @@ static void SCMage_next(SCMage* unit, int inNumSamples);
 static void SCMage_Ctor(SCMage* unit);
 static void* SCMage_genThread(void* argv);
 
-const std::string prefix = "/home/nathan/git/mage/data/voices/";
-
 void SCMage_Ctor(SCMage* unit) {
     void* mage_memory = RTAlloc(unit->mWorld, sizeof(MAGE::Mage));
     unit->mage = new(mage_memory) MAGE::Mage();
-
-    std::string voice = "slt";
-
-    int argc = 47;
-    const std::string argv_strings[argc] = {
-        "-s", "48000", // TODO: match server's sample rate
-        "-p", "240",
-        "-a", "0.55",
-        "-td", prefix + voice + "/tree-dur.inf",
-        "-tm", prefix + voice + "/tree-mgc.inf",
-        "-tf", prefix + voice + "/tree-lf0.inf",
-        "-tl", prefix + voice + "/tree-lpf.inf",
-        "-md", prefix + voice + "/dur.pdf",
-        "-mm", prefix + voice + "/mgc.pdf",
-        "-mf", prefix + voice + "/lf0.pdf",
-        "-ml", prefix + voice + "/lpf.pdf",
-        "-dm", prefix + voice + "/mgc.win1",
-        "-dm", prefix + voice + "/mgc.win2",
-        "-dm", prefix + voice + "/mgc.win3",
-        "-df", prefix + voice + "/lf0.win1",
-        "-df", prefix + voice + "/lf0.win2",
-        "-df", prefix + voice + "/lf0.win3",
-        "-dl", prefix + voice + "/lpf.win1",
-        "-em", prefix + voice + "/tree-gv-mgc.inf",
-        "-ef", prefix + voice + "/tree-gv-lf0.inf",
-        "-cm", prefix + voice + "/gv-mgc.pdf",
-        "-cf", prefix + voice + "/gv-lf0.pdf",
-        "-k", prefix + voice + "/gv-switch.inf",
-        // This argument (referred to as labfn in the MAGE source) is not used.
-        // But if I leave it out, I get a segfault. (?????)
-        ""
-    };
-
-    char** argv = new char*[MAGE::maxNumOfArguments];
-    for (int i = 0; i < argc; i++) {
-        argv[i] = new char[MAGE::maxStrLen];
-        strcpy(argv[i], argv_strings[i].c_str());
-    }
-
-    unit->mage->addEngine(voice, argc, argv);
 
     SCMage_alice(unit);
     pthread_create(&(unit->thread), NULL, SCMage_genThread, (void*)unit);
@@ -70,8 +28,55 @@ void SCMage_next(SCMage* unit, int inNumSamples) {
     }
 }
 
+
+const std::string prefix = "/home/nathan/git/mage/data/voices/";
+
+void addVoice(SCMage* unit, std::string voiceName) {
+    int mage_argc = 47;
+    const std::string mage_argv_strings[mage_argc] = {
+        "-s", "48000", // TODO: match server's sample rate
+        "-p", "240",
+        "-a", "0.55",
+        "-td", prefix + voiceName + "/tree-dur.inf",
+        "-tm", prefix + voiceName + "/tree-mgc.inf",
+        "-tf", prefix + voiceName + "/tree-lf0.inf",
+        "-tl", prefix + voiceName + "/tree-lpf.inf",
+        "-md", prefix + voiceName + "/dur.pdf",
+        "-mm", prefix + voiceName + "/mgc.pdf",
+        "-mf", prefix + voiceName + "/lf0.pdf",
+        "-ml", prefix + voiceName + "/lpf.pdf",
+        "-dm", prefix + voiceName + "/mgc.win1",
+        "-dm", prefix + voiceName + "/mgc.win2",
+        "-dm", prefix + voiceName + "/mgc.win3",
+        "-df", prefix + voiceName + "/lf0.win1",
+        "-df", prefix + voiceName + "/lf0.win2",
+        "-df", prefix + voiceName + "/lf0.win3",
+        "-dl", prefix + voiceName + "/lpf.win1",
+        "-em", prefix + voiceName + "/tree-gv-mgc.inf",
+        "-ef", prefix + voiceName + "/tree-gv-lf0.inf",
+        "-cm", prefix + voiceName + "/gv-mgc.pdf",
+        "-cf", prefix + voiceName + "/gv-lf0.pdf",
+        "-k", prefix + voiceName + "/gv-switch.inf",
+        // This argument (referred to as labfn in the MAGE source) is not used.
+        // But if I leave it out, I get a segfault. (?????)
+        ""
+    };
+
+    // Convert from std::strings to C-style strings as required by addEngine
+    char** mage_argv = new char*[MAGE::maxNumOfArguments];
+    for (int i = 0; i < mage_argc; i++) {
+        mage_argv[i] = new char[MAGE::maxStrLen];
+        strcpy(mage_argv[i], mage_argv_strings[i].c_str());
+    }
+
+    unit->mage->addEngine(voiceName, mage_argc, mage_argv);
+}
+
 void* SCMage_genThread(void* argv) {
     SCMage* unit = (SCMage*)argv;
+
+    addVoice(unit, "slt");
+
     while (1) {
         pthread_testcancel();
         if (unit->mage->ready()) {
