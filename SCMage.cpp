@@ -10,8 +10,8 @@ static void SCMage_Ctor(SCMage* unit);
 static void* SCMage_genThread(void* argv);
 
 void SCMage_Ctor(SCMage* unit) {
-    void* mem = RTAlloc(unit->mWorld, sizeof(MAGE::Mage));
-    unit->mage = new(mem) MAGE::Mage();
+    void* mage_memory = RTAlloc(unit->mWorld, sizeof(MAGE::Mage));
+    unit->mage = new(mage_memory) MAGE::Mage();
 
     unit->mage->addEngine("slt", "/home/nathan/git/mage/data/configFiles/cmu-artic/slt.conf");
 
@@ -31,13 +31,6 @@ void SCMage_next(SCMage* unit, int inNumSamples) {
     }
 }
 
-void SCMage_Dtor(SCMage* unit) {
-    pthread_cancel(unit->thread);
-    pthread_join(unit->thread, NULL);
-    unit->mage->~Mage();
-    RTFree(unit->mWorld, unit->mage);
-}
-
 void* SCMage_genThread(void* argv) {
     SCMage* unit = (SCMage*)argv;
     while (1) {
@@ -50,6 +43,13 @@ void* SCMage_genThread(void* argv) {
         }
     }
     return NULL;
+}
+
+void SCMage_Dtor(SCMage* unit) {
+    pthread_cancel(unit->thread);
+    pthread_join(unit->thread, NULL);
+    unit->mage->~Mage();
+    RTFree(unit->mWorld, unit->mage);
 }
 
 PluginLoad(SCMageUGens) {
