@@ -31,7 +31,7 @@ void SCMage_next(SCMage* unit, int inNumSamples) {
 
 const std::string prefix = "/home/nathan/git/mage/data/voices/";
 
-void addVoice(SCMage* unit, std::string voiceName) {
+void SCMage_addVoice(SCMage* unit, std::string voiceName) {
     int mage_argc = 47;
     const std::string mage_argv_strings[mage_argc] = {
         "-s", "48000", // TODO: match server's sample rate
@@ -75,7 +75,7 @@ void addVoice(SCMage* unit, std::string voiceName) {
 void* SCMage_genThread(void* argv) {
     SCMage* unit = (SCMage*)argv;
 
-    addVoice(unit, "slt");
+    SCMage_addVoice(unit, "slt");
 
     while (1) {
         pthread_testcancel();
@@ -95,6 +95,8 @@ void SCMage_Dtor(SCMage* unit) {
     unit->mage->~Mage();
     RTFree(unit->mWorld, unit->mage);
 }
+
+
 
 PluginLoad(SCMageUGens) {
     ft = inTable;
