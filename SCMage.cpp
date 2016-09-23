@@ -21,7 +21,13 @@ void SCMage_Ctor(SCMage* unit) {
 }
 
 void SCMage_next(SCMage* unit, int inNumSamples) {
+    float freq = IN0(0);
+    float timeScale = IN0(1);
     float *out = OUT(0);
+    if (unit->mage->ready()) {
+        unit->mage->setPitch(freq, MAGE::overwrite);
+        unit->mage->setSpeed(timeScale * MAGE::defaultFrameRate, MAGE::overwrite);
+    }
     for (int i = 0; i < inNumSamples; i++) {
         unit->mage->updateSamples();
         out[i] = unit->mage->popSamples();

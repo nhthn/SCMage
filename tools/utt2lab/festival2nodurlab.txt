@@ -1,0 +1,9 @@
+# in festival gen utt
+(set! utt (SayText "Hello World!"))
+(utt.save utt "filename.utt")
+
+# in utt2lab 
+utt2lab-simplified.sh filename.utt
+
+# remove durations
+awk -F" " '{print $3}' filename.lab > nodur-filename.lab 

@@ -2,6 +2,67 @@ void SCMage_alice(SCMage* unit) {
     // extremely silly
     // I don't have any facilities for loading label files at the moment, using this for testing
     // Note that MAGE has a limit of 512 labels in the queue
+
+unit->mage->pushLabel(MAGE::Label("x^x-pau+s=t@x_x/A:0_0_0/B:x-x-x@x-x&x-x#x-x$x-x!x-x;x-x|x/C:1+1+4/D:0_0/E:x+x@x+x&x+x#x+x/F:content_2/G:0_0/H:x=x^1=3|0/I:5=3/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("x^pau-s+t=ah@1_4/A:0_0_0/B:1-1-4@1-2&1-5#1-3$1-3!0-2;0-2|ah/C:0+0+1/D:0_0/E:content+2@1+3&1+2#0+1/F:content_2/G:0_0/H:5=3^1=3|L-H%/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("pau^s-t+ah=d@2_3/A:0_0_0/B:1-1-4@1-2&1-5#1-3$1-3!0-2;0-2|ah/C:0+0+1/D:0_0/E:content+2@1+3&1+2#0+1/F:content_2/G:0_0/H:5=3^1=3|L-H%/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("s^t-ah+d=iy@3_2/A:0_0_0/B:1-1-4@1-2&1-5#1-3$1-3!0-2;0-2|ah/C:0+0+1/D:0_0/E:content+2@1+3&1+2#0+1/F:content_2/G:0_0/H:5=3^1=3|L-H%/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("t^ah-d+iy=t@4_1/A:0_0_0/B:1-1-4@1-2&1-5#1-3$1-3!0-2;0-2|ah/C:0+0+1/D:0_0/E:content+2@1+3&1+2#0+1/F:content_2/G:0_0/H:5=3^1=3|L-H%/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ah^d-iy+t=ey@1_1/A:1_1_4/B:0-0-1@2-1&2-4#1-3$1-3!1-1;1-1|iy/C:1+1+3/D:0_0/E:content+2@1+3&1+2#0+1/F:content_2/G:0_0/H:5=3^1=3|L-H%/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("d^iy-t+ey=b@1_3/A:0_0_1/B:1-1-3@1-2&3-3#1-2$1-2!2-2;2-2|ey/C:0+0+2/D:content_2/E:content+2@2+2&2+1#1+1/F:content_1/G:0_0/H:5=3^1=3|L-H%/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("iy^t-ey+b=ax@2_2/A:0_0_1/B:1-1-3@1-2&3-3#1-2$1-2!2-2;2-2|ey/C:0+0+2/D:content_2/E:content+2@2+2&2+1#1+1/F:content_1/G:0_0/H:5=3^1=3|L-H%/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("t^ey-b+ax=l@3_1/A:0_0_1/B:1-1-3@1-2&3-3#1-2$1-2!2-2;2-2|ey/C:0+0+2/D:content_2/E:content+2@2+2&2+1#1+1/F:content_1/G:0_0/H:5=3^1=3|L-H%/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ey^b-ax+l=r@1_2/A:1_1_3/B:0-0-2@2-1&4-2#2-2$2-2!1-1;1-1|ax/C:1+1+4/D:content_2/E:content+2@2+2&2+1#1+1/F:content_1/G:0_0/H:5=3^1=3|L-H%/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("b^ax-l+r=uw@2_1/A:1_1_3/B:0-0-2@2-1&4-2#2-2$2-2!1-1;1-1|ax/C:1+1+4/D:content_2/E:content+2@2+2&2+1#1+1/F:content_1/G:0_0/H:5=3^1=3|L-H%/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ax^l-r+uw=l@1_4/A:0_0_2/B:1-1-4@1-1&5-1#2-1$2-1!2-0;2-0|uw/C:1+0+3/D:content_2/E:content+1@3+1&3+0#1+0/F:content_1/G:0_0/H:5=3^1=3|L-H%/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("l^r-uw+l=z@2_3/A:0_0_2/B:1-1-4@1-1&5-1#2-1$2-1!2-0;2-0|uw/C:1+0+3/D:content_2/E:content+1@3+1&3+0#1+0/F:content_1/G:0_0/H:5=3^1=3|L-H%/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("r^uw-l+z=pau@3_2/A:0_0_2/B:1-1-4@1-1&5-1#2-1$2-1!2-0;2-0|uw/C:1+0+3/D:content_2/E:content+1@3+1&3+0#1+0/F:content_1/G:0_0/H:5=3^1=3|L-H%/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("uw^l-z+pau=t@4_1/A:0_0_2/B:1-1-4@1-1&5-1#2-1$2-1!2-0;2-0|uw/C:1+0+3/D:content_2/E:content+1@3+1&3+0#1+0/F:content_1/G:0_0/H:5=3^1=3|L-H%/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("l^z-pau+t=ey@x_x/A:1_1_4/B:x-x-x@x-x&x-x#x-x$x-x!x-x;x-x|x/C:1+0+3/D:content_1/E:x+x@x+x&x+x#x+x/F:content_1/G:5_3/H:x=x^1=3|0/I:5=5/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("z^pau-t+ey=k@1_3/A:1_1_4/B:1-0-3@1-1&1-5#1-5$1-2!0-1;0-4|0/C:1+0+2/D:content_1/E:content+1@1+5&1+2#0+3/F:det_1/G:5_3/H:5=5^2=2|L-L%/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("pau^t-ey+k=ao@2_2/A:1_1_4/B:1-0-3@1-1&1-5#1-5$1-2!0-1;0-4|0/C:1+0+2/D:content_1/E:content+1@1+5&1+2#0+3/F:det_1/G:5_3/H:5=5^2=2|L-L%/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("t^ey-k+ao=l@3_1/A:1_1_4/B:1-0-3@1-1&1-5#1-5$1-2!0-1;0-4|0/C:1+0+2/D:content_1/E:content+1@1+5&1+2#0+3/F:det_1/G:5_3/H:5=5^2=2|L-L%/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ey^k-ao+l=ah@1_2/A:1_0_3/B:1-0-2@1-1&2-4#1-4$1-2!1-1;0-3|0/C:1+0+2/D:content_1/E:det+1@2+4&2+2#1+2/F:in_1/G:5_3/H:5=5^2=2|L-L%/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("k^ao-l+ah=v@2_1/A:1_0_3/B:1-0-2@1-1&2-4#1-4$1-2!1-1;0-3|0/C:1+0+2/D:content_1/E:det+1@2+4&2+2#1+2/F:in_1/G:5_3/H:5=5^2=2|L-L%/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ao^l-ah+v=y@1_2/A:1_0_2/B:1-0-2@1-1&3-3#2-3$1-2!1-1;0-2|0/C:1+0+3/D:det_1/E:in+1@3+3&2+2#2+1/F:content_1/G:5_3/H:5=5^2=2|L-L%/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("l^ah-v+y=ao@2_1/A:1_0_2/B:1-0-2@1-1&3-3#2-3$1-2!1-1;0-2|0/C:1+0+3/D:det_1/E:in+1@3+3&2+2#2+1/F:content_1/G:5_3/H:5=5^2=2|L-L%/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ah^v-y+ao=r@1_3/A:1_0_2/B:1-0-3@1-1&4-2#3-2$1-2!1-1;0-1|0/C:1+1+4/D:in_1/E:content+1@4+2&2+1#3+1/F:content_1/G:5_3/H:5=5^2=2|L-L%/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("v^y-ao+r=s@2_2/A:1_0_2/B:1-0-3@1-1&4-2#3-2$1-2!1-1;0-1|0/C:1+1+4/D:in_1/E:content+1@4+2&2+1#3+1/F:content_1/G:5_3/H:5=5^2=2|L-L%/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("y^ao-r+s=t@3_1/A:1_0_2/B:1-0-3@1-1&4-2#3-2$1-2!1-1;0-1|0/C:1+1+4/D:in_1/E:content+1@4+2&2+1#3+1/F:content_1/G:5_3/H:5=5^2=2|L-L%/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ao^r-s+t=ah@1_4/A:1_0_3/B:1-1-4@1-1&5-1#4-1$1-1!1-0;0-0|0/C:1+0+2/D:content_1/E:content+1@5+1&3+0#1+0/F:in_1/G:5_3/H:5=5^2=2|L-L%/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("r^s-t+ah=f@2_3/A:1_0_3/B:1-1-4@1-1&5-1#4-1$1-1!1-0;0-0|0/C:1+0+2/D:content_1/E:content+1@5+1&3+0#1+0/F:in_1/G:5_3/H:5=5^2=2|L-L%/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("s^t-ah+f=pau@3_2/A:1_0_3/B:1-1-4@1-1&5-1#4-1$1-1!1-0;0-0|0/C:1+0+2/D:content_1/E:content+1@5+1&3+0#1+0/F:in_1/G:5_3/H:5=5^2=2|L-L%/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("t^ah-f+pau=ih@4_1/A:1_0_3/B:1-1-4@1-1&5-1#4-1$1-1!1-0;0-0|0/C:1+0+2/D:content_1/E:content+1@5+1&3+0#1+0/F:in_1/G:5_3/H:5=5^2=2|L-L%/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ah^f-pau+ih=f@x_x/A:1_1_4/B:x-x-x@x-x&x-x#x-x$x-x!x-x;x-x|x/C:1+0+2/D:content_1/E:x+x@x+x&x+x#x+x/F:in_1/G:5_5/H:x=x^1=3|0/I:9=8/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("f^pau-ih+f=y@1_2/A:1_1_4/B:1-0-2@1-1&1-9#1-8$1-5!0-1;0-1|0/C:1+1+2/D:content_1/E:in+1@1+8&1+6#0+1/F:content_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("pau^ih-f+y=uw@2_1/A:1_1_4/B:1-0-2@1-1&1-9#1-8$1-5!0-1;0-1|0/C:1+1+2/D:content_1/E:in+1@1+8&1+6#0+1/F:content_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ih^f-y+uw=l@1_2/A:1_0_2/B:1-1-2@1-1&2-8#1-7$1-4!1-1;0-1|0/C:1+1+3/D:in_1/E:content+1@2+7&1+5#0+1/F:content_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("f^y-uw+l=iy@2_1/A:1_0_2/B:1-1-2@1-1&2-8#1-7$1-4!1-1;0-1|0/C:1+1+3/D:in_1/E:content+1@2+7&1+5#0+1/F:content_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("y^uw-l+iy=v@1_3/A:1_1_2/B:1-1-3@1-1&3-7#2-6$2-3!1-1;1-5|0/C:1+0+3/D:content_1/E:content+1@3+6&2+4#1+2/F:in_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("uw^l-iy+v=f@2_2/A:1_1_2/B:1-1-3@1-1&3-7#2-6$2-3!1-1;1-5|0/C:1+0+3/D:content_1/E:content+1@3+6&2+4#1+2/F:in_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("l^iy-v+f=ao@3_1/A:1_1_2/B:1-1-3@1-1&3-7#2-6$2-3!1-1;1-5|0/C:1+0+3/D:content_1/E:content+1@3+6&2+4#1+2/F:in_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("iy^v-f+ao=r@1_3/A:1_1_3/B:1-0-3@1-1&4-6#3-5$3-3!1-1;1-4|0/C:1+0+3/D:content_1/E:in+1@4+5&3+4#1+1/F:content_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("v^f-ao+r=m@2_2/A:1_1_3/B:1-0-3@1-1&4-6#3-5$3-3!1-1;1-4|0/C:1+0+3/D:content_1/E:in+1@4+5&3+4#1+1/F:content_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("f^ao-r+m=ao@3_1/A:1_1_3/B:1-0-3@1-1&4-6#3-5$3-3!1-1;1-4|0/C:1+0+3/D:content_1/E:in+1@4+5&3+4#1+1/F:content_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ao^r-m+ao=r@1_3/A:1_0_3/B:1-0-3@1-1&5-5#4-4$3-3!1-1;2-3|0/C:1+0+3/D:in_1/E:content+1@5+4&3+3#2+1/F:content_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("r^m-ao+r=dh@2_2/A:1_0_3/B:1-0-3@1-1&5-5#4-4$3-3!1-1;2-3|0/C:1+0+3/D:in_1/E:content+1@5+4&3+3#2+1/F:content_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("m^ao-r+dh=ae@3_1/A:1_0_3/B:1-0-3@1-1&5-5#4-4$3-3!1-1;2-3|0/C:1+0+3/D:in_1/E:content+1@5+4&3+3#2+1/F:content_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ao^r-dh+ae=n@1_3/A:1_0_3/B:1-0-3@1-1&6-4#5-3$3-3!1-1;3-2|0/C:1+0+3/D:content_1/E:content+1@6+3&4+2#1+1/F:content_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("r^dh-ae+n=f@2_2/A:1_0_3/B:1-0-3@1-1&6-4#5-3$3-3!1-1;3-2|0/C:1+0+3/D:content_1/E:content+1@6+3&4+2#1+1/F:content_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("dh^ae-n+f=ay@3_1/A:1_0_3/B:1-0-3@1-1&6-4#5-3$3-3!1-1;3-2|0/C:1+0+3/D:content_1/E:content+1@6+3&4+2#1+1/F:content_1/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ae^n-f+ay=v@1_3/A:1_0_3/B:1-0-3@1-1&7-3#6-2$3-3!1-1;4-1|0/C:1+1+3/D:content_1/E:content+1@7+2&5+1#1+1/F:content_2/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("n^f-ay+v=m@2_2/A:1_0_3/B:1-0-3@1-1&7-3#6-2$3-3!1-1;4-1|0/C:1+1+3/D:content_1/E:content+1@7+2&5+1#1+1/F:content_2/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("f^ay-v+m=ih@3_1/A:1_0_3/B:1-0-3@1-1&7-3#6-2$3-3!1-1;4-1|0/C:1+1+3/D:content_1/E:content+1@7+2&5+1#1+1/F:content_2/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ay^v-m+ih=n@1_3/A:1_0_3/B:1-1-3@1-2&8-2#7-1$3-2!1-0;5-1|0/C:0+1+3/D:content_1/E:content+2@8+1&6+0#1+0/F:0_0/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("v^m-ih+n=ax@2_2/A:1_0_3/B:1-1-3@1-2&8-2#7-1$3-2!1-0;5-1|0/C:0+1+3/D:content_1/E:content+2@8+1&6+0#1+0/F:0_0/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("m^ih-n+ax=t@3_1/A:1_0_3/B:1-1-3@1-2&8-2#7-1$3-2!1-0;5-1|0/C:0+1+3/D:content_1/E:content+2@8+1&6+0#1+0/F:0_0/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ih^n-ax+t=s@1_3/A:1_1_3/B:0-1-3@2-1&9-1#8-1$4-1!1-0;1-0|0/C:0+0+0/D:content_1/E:content+2@8+1&6+0#1+0/F:0_0/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("n^ax-t+s=pau@2_2/A:1_1_3/B:0-1-3@2-1&9-1#8-1$4-1!1-0;1-0|0/C:0+0+0/D:content_1/E:content+2@8+1&6+0#1+0/F:0_0/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("ax^t-s+pau=x@3_1/A:1_1_3/B:0-1-3@2-1&9-1#8-1$4-1!1-0;1-0|0/C:0+0+0/D:content_1/E:content+2@8+1&6+0#1+0/F:0_0/G:5_5/H:9=8^3=1|L-L%/I:0=0/J:19+16-3"));
+unit->mage->pushLabel(MAGE::Label("t^s-pau+x=x@x_x/A:0_1_3/B:x-x-x@x-x&x-x#x-x$x-x!x-x;x-x|x/C:0+0+0/D:content_2/E:x+x@x+x&x+x#x+x/F:0_0/G:9_8/H:x=x^1=3|0/I:0=0/J:19+16-3"));
+
+    /*
+
     unit->mage->pushLabel(MAGE::Label("x^x-pau+ae=l@x_x/A:0_0_0/B:x-x-x@x-x&x-x#x-x$x-x!x-x;x-x|x/C:1+1+2/D:0_0/E:x+x@x+x&x+x#x+x/F:content_2/G:0_0/H:x=x^1=10|0/I:19=12/J:79+57-10"));
     unit->mage->pushLabel(MAGE::Label("x^pau-ae+l=ax@1_2/A:0_0_0/B:1-1-2@1-2&1-19#1-10$1-5!0-2;0-8|ae/C:0+0+2/D:0_0/E:content+2@1+12&1+6#0+2/F:aux_1/G:0_0/H:19=12^1=10|L-H%/I:3=3/J:79+57-10"));
     unit->mage->pushLabel(MAGE::Label("pau^ae-l+ax=s@2_1/A:0_0_0/B:1-1-2@1-2&1-19#1-10$1-5!0-2;0-8|ae/C:0+0+2/D:0_0/E:content+2@1+12&1+6#0+2/F:aux_1/G:0_0/H:19=12^1=10|L-H%/I:3=3/J:79+57-10"));
@@ -172,7 +233,7 @@ void SCMage_alice(SCMage* unit) {
     unit->mage->pushLabel(MAGE::Label("uw^s-pau+ah=v@x_x/A:0_1_3/B:x-x-x@x-x&x-x#x-x$x-x!x-x;x-x|x/C:1+0+2/D:content_1/E:x+x@x+x&x+x#x+x/F:in_1/G:5_5/H:x=x^1=10|0/I:6=5/J:79+57-10"));
     unit->mage->pushLabel(MAGE::Label("s^pau-ah+v=ax@1_2/A:0_1_3/B:1-0-2@1-1&1-6#1-4$1-4!0-2;0-2|ah/C:0+0+1/D:content_1/E:in+1@1+5&1+3#0+2/F:det_1/G:5_5/H:6=5^9=2|L-L%/I:9=4/J:79+57-10"));
     unit->mage->pushLabel(MAGE::Label("pau^ah-v+ax=b@2_1/A:0_1_3/B:1-0-2@1-1&1-6#1-4$1-4!0-2;0-2|ah/C:0+0+1/D:content_1/E:in+1@1+5&1+3#0+2/F:det_1/G:5_5/H:6=5^9=2|L-L%/I:9=4/J:79+57-10"));
-    unit->mage->pushLabel(MAGE::Label("ah^v-ax+b=uh@1_1/A:1_0_2/B:0-0-1@1-1&2-5#1-4$1-4!1-1;0-1|ax/C:1+1+3/D:in_1/E:det+1@2+4&1+3#0+1/F:content_1/G:5_5/H:6=5^9=2|L-L%/I:9=4/J:79+57-10"));
+    unit->mage->pushLabel(MAGE::Label("ah^v-ax+b=uh@1_1/A:1_0_2/B:0-0-1@1-1&2-5#1-4$1-4!1-1;0-1|ax/C:1+1+3/D:in_1/E:deNt+1@2+4&1+3#0+1/F:content_1/G:5_5/H:6=5^9=2|L-L%/I:9=4/J:79+57-10"));
     unit->mage->pushLabel(MAGE::Label("v^ax-b+uh=k@1_3/A:0_0_1/B:1-1-3@1-1&3-4#1-3$1-3!2-1;0-2|uh/C:1+0+3/D:det_1/E:content+1@3+3&1+2#0+1/F:content_1/G:5_5/H:6=5^9=2|L-L%/I:9=4/J:79+57-10"));
     unit->mage->pushLabel(MAGE::Label("ax^b-uh+k=th@2_2/A:0_0_1/B:1-1-3@1-1&3-4#1-3$1-3!2-1;0-2|uh/C:1+0+3/D:det_1/E:content+1@3+3&1+2#0+1/F:content_1/G:5_5/H:6=5^9=2|L-L%/I:9=4/J:79+57-10"));
     unit->mage->pushLabel(MAGE::Label("b^uh-k+th=ao@3_1/A:0_0_1/B:1-1-3@1-1&3-4#1-3$1-3!2-1;0-2|uh/C:1+0+3/D:det_1/E:content+1@3+3&1+2#0+1/F:content_1/G:5_5/H:6=5^9=2|L-L%/I:9=4/J:79+57-10"));
@@ -208,5 +269,5 @@ void SCMage_alice(SCMage* unit) {
     unit->mage->pushLabel(MAGE::Label("ey^sh-ax+n=pau@1_2/A:1_1_2/B:0-1-2@4-1&9-1#6-1$4-1!1-0;1-0|ax/C:0+0+0/D:cc_1/E:content+4@4+1&2+0#2+0/F:0_0/G:6_5/H:9=4^10=1|H-H%/I:0=0/J:79+57-10"));
     unit->mage->pushLabel(MAGE::Label("sh^ax-n+pau=x@2_1/A:1_1_2/B:0-1-2@4-1&9-1#6-1$4-1!1-0;1-0|ax/C:0+0+0/D:cc_1/E:content+4@4+1&2+0#2+0/F:0_0/G:6_5/H:9=4^10=1|H-H%/I:0=0/J:79+57-10"));
     unit->mage->pushLabel(MAGE::Label("ax^n-pau+x=x@x_x/A:0_1_2/B:x-x-x@x-x&x-x#x-x$x-x!x-x;x-x|x/C:0+0+0/D:content_4/E:x+x@x+x&x+x#x+x/F:0_0/G:9_4/H:x=x^1=10|0/I:0=0/J:79+57-10"));
-
+    */
 }

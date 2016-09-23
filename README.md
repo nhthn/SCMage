@@ -1,6 +1,6 @@
 ## SCMage - EARLY STAGE OF DEVELOPMENT - DO NOT USE! ##
 
-A SuperCollider plugin wrapping the MAGE speech synthesizer.
+A SuperCollider plugin wrapping the MAGE/pHTS speech synthesizer.
 
 ### Building and installing ###
 
@@ -14,14 +14,20 @@ Here, `/path/to/supercollider/` is the location of a copy of the SuperCollider *
 
 After building, install the SCMage directory as you would a quark. I prefer to add a symbolic link in my extensions directory, but you can also use `Quarks.gui` and click on "Install a folder."
 
-### I'm sorry ###
+### What frontend should I use? ###
 
-You need to make some edits to the MAGE data files and the SCMage source to get this working.
+MAGE is only a text-to-speech backend, converting a stream of labels (phonemes tagged with a lot of contextual information) to audio. It's extremely tedious to write labels by hand, so some kind of frontend is needed to supply them. Most MAGE users want to convert text to labels, but if you know MAGE's label format, you can generate labels however you want.
 
-Open up `/path/to/mage/data/configFiles/slt.conf`. Change all of those relative paths to absolute paths.
+SCMage has two frontends:
 
-Back in SCMage, open `SCMageAsyncInit_run` in `SCMage.cpp`. Change `/home/nathan/git/mage/data/configFiles/cmu-artic/slt.conf` to the absolute location of the `slt.conf` file you just opened.
+- `labelizer.py` is a crude Python script that converts text into labels. It can only labelize text with words found in the CMU dictionary, but it is very easy for you to modify for your own needs.
+- Festival provides superior quality, but you have to build and download it. I have only tried it on Linux.
 
-### Testing ###
+#### Festival ####
 
-Pull out your headphones and try `{ SCMage.ar!2 }.play`.
+You can get Festival via Linux repositories, but I haven't figured out how to get the `text2utts` and `dumpfeats` scripts working correctly out of such installations. Unfortunately, you will have to download and build Festival yourself.
+
+I've provided a script called `download-and-build-festival.sh` that does this for you (forked from the script Festival uses for testing). Run it with the root of this repository as your working directory. The total download size is 15 MB, a lot of which is excess because Festival is not very good at modularity. I can assure you that it doesn't require root access and won't interfere with any installed versions of Festival.
+
+The script is not very smart, so if it has problems like a failed download you may have to fix them manually. It's very simple though, so troubleshooting should be straightforward.
+

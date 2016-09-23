@@ -18,3 +18,6 @@ CPackSourceConfig.cmake
 *.so
 *.scx
 *.dll
+
+festival
+cmudict-*
