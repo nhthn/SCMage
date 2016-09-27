@@ -14,6 +14,10 @@ void SCMage_Ctor(SCMage* unit) {
     unit->mage = new(mage_memory) MAGE::Mage();
 
     SCMage_alice(unit);
+
+    unit->freqValue = 0.0f;
+    unit->freqAction = MAGE::noaction;
+
     pthread_create(&(unit->thread), NULL, SCMage_genThread, (void*)unit);
 
     SETCALC(SCMage_next);
@@ -21,11 +25,15 @@ void SCMage_Ctor(SCMage* unit) {
 }
 
 void SCMage_next(SCMage* unit, int inNumSamples) {
-    float freq = IN0(0);
-    float timeScale = IN0(1);
+    float freqValue = IN0(1);
+    float freqAction = IN0(2);
+    float timeScale = IN0(3);
     float *out = OUT(0);
+
+    unit->freqValue = freqValue;
+    unit->freqAction = freqAction;
+
     if (unit->mage->ready()) {
-        unit->mage->setPitch(freq, MAGE::overwrite);
         unit->mage->setSpeed(timeScale * MAGE::defaultFrameRate, MAGE::overwrite);
     }
     for (int i = 0; i < inNumSamples; i++) {
@@ -87,6 +95,7 @@ void* SCMage_genThread(void* argv) {
         pthread_testcancel();
         if (unit->mage->ready()) {
             unit->mage->run();
+            unit->mage->setPitch(unit->freqValue, unit->freqAction);
             usleep(100);
         } else {
             usleep(100);

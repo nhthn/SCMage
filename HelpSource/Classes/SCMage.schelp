@@ -1,0 +1,22 @@
+class:: SCMage
+summary:: speech synthesis with MAGE/pHTS
+categories:: UGens>Generators
+
+SCMage is an interface to the MAGE/pHTS real-time speech synthesizer.
+
+classmethods::
+
+method:: ar
+
+argument:: buf
+Not used. Reserved for reading labels from a buffer.
+
+argument:: freqValue
+argument:: freqMode
+
+These two parameters allow you to modify or replace the pitch of the speech. Mode -1 means "do nothing," mode 0 is overwrite, mode 1 is shift, mode 2 is scale.
+
+argument:: timeScale
+The slowdown factor for frames. MAGE limits this to the range [1/240, 20].
+
+note:: In MAGE this is referred to internally as "speed," which has the opposite function of what you'd expect. I've taken the liberty of changing the name. ::
