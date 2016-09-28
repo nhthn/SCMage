@@ -28,6 +28,7 @@ void SCMage_next(SCMage* unit, int inNumSamples) {
     float freqValue = IN0(1);
     float freqAction = IN0(2);
     float timeScale = IN0(3);
+    float alpha = IN0(4);
     float *out = OUT(0);
 
     unit->freqValue = freqValue;
@@ -35,6 +36,7 @@ void SCMage_next(SCMage* unit, int inNumSamples) {
 
     if (unit->mage->ready()) {
         unit->mage->setSpeed(timeScale * MAGE::defaultFrameRate, MAGE::overwrite);
+        unit->mage->setAlpha(alpha);
     }
     for (int i = 0; i < inNumSamples; i++) {
         unit->mage->updateSamples();

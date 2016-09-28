@@ -19,4 +19,7 @@ These two parameters allow you to modify or replace the pitch of the speech. Mod
 argument:: timeScale
 The slowdown factor for frames. MAGE limits this to the range [1/240, 20].
 
-note:: In MAGE this is referred to internally as "speed," which has the opposite function of what you'd expect. I've taken the liberty of changing the name. ::
+note:: MAGE refers to this internally as "speed," which has the opposite function of what you'd expect. I've taken the liberty of changing the name but not the behavior. ::
+
+argument:: alpha
+The vocal tract length, from 0 (Donald Duck) to 1 (the whispers of Satan incarnate).
