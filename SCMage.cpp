@@ -26,7 +26,7 @@ void SCMage_pushLabelsFromSndBuf(World* world, SndBuf* buf, MAGE::Mage* mage) {
     int bufSamples = buf->samples;
 
     // Create an intermediate buffer for converting the first channel of the sound buf into chars.
-    char* stringBuf = (char*)RTAlloc(world, sizeof(char) * bufFrames);
+    char* stringBuf = (char*)RTAlloc(world, sizeof(char) * MAGE::maxStrLen);
     // This is the current length of the intermediate string.
     int charIndex = 0;
     for (int bufIndex = 0; bufIndex < bufSamples; bufIndex += bufChannels) {
@@ -36,7 +36,9 @@ void SCMage_pushLabelsFromSndBuf(World* world, SndBuf* buf, MAGE::Mage* mage) {
             break;
         }
         // Copy the character into the intermediate buffer.
-        stringBuf[charIndex] = character;
+        if (charIndex < MAGE::maxStrLen) {
+            stringBuf[charIndex] = character;
+        }
         // Newlines push the label and flush the intermediate buffer.
         if (character == '\n') {
             std::string labelString(stringBuf, charIndex);
@@ -44,7 +46,9 @@ void SCMage_pushLabelsFromSndBuf(World* world, SndBuf* buf, MAGE::Mage* mage) {
             mage->pushLabel(label);
             charIndex = 0;
         } else {
-            charIndex += 1;
+            if (charIndex < MAGE::maxStrLen) {
+                charIndex += 1;
+            }
         }
     }
     RTFree(world, stringBuf);
