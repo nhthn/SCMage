@@ -1,5 +1,5 @@
 SCMage : UGen {
-    *ar { |buf, freqValue = 0.0, freqMode = -1, timeScale = 1.0, alpha = 0.55|
-        ^this.multiNew('audio', buf, freqValue, freqMode, timeScale, alpha);
+    *ar { |bufnum, freqValue = 0.0, freqMode = -1, timeScale = 1.0, alpha = 0.55|
+        ^this.multiNew('audio', bufnum, freqValue, freqMode, timeScale, alpha);
     }
 }

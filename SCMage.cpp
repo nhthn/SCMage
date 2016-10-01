@@ -1,19 +1,74 @@
 #include <string>
-#include "SCMage.hpp"
+#include "mage.h"
+#include "SC_PlugIn.h"
 #include <pthread.h>
-#include "alice.hpp"
 
 static InterfaceTable *ft;
+
+struct SCMage : public Unit {
+    MAGE::Mage* mage;
+    uint32 bufnum;
+    SndBuf *buf;
+    float freqValue;
+    float freqAction;
+    pthread_t thread;
+};
 
 static void SCMage_next(SCMage* unit, int inNumSamples);
 static void SCMage_Ctor(SCMage* unit);
 static void* SCMage_genThread(void* argv);
+static void SCMage_pushLabelsFromSndBuf(World* world, SndBuf* buf, MAGE::Mage* mage);
+
+void SCMage_pushLabelsFromSndBuf(World* world, SndBuf* buf, MAGE::Mage* mage) {
+    float* bufData = buf->data;
+    int bufFrames = buf->frames;
+    int bufChannels = buf->channels;
+    int bufSamples = buf->samples;
+
+    // Create an intermediate buffer for converting the first channel of the sound buf into chars.
+    char* stringBuf = (char*)RTAlloc(world, sizeof(char) * bufFrames);
+    // This is the current length of the intermediate string.
+    int charIndex = 0;
+    for (int bufIndex = 0; bufIndex < bufSamples; bufIndex += bufChannels) {
+        char character = bufData[bufIndex];
+        // Allow premature null-termination (optional).
+        if (character == '\0') {
+            break;
+        }
+        // Copy the character into the intermediate buffer.
+        stringBuf[charIndex] = character;
+        // Newlines push the label and flush the intermediate buffer.
+        if (character == '\n') {
+            std::string labelString(stringBuf, charIndex);
+            MAGE::Label label(labelString);
+            mage->pushLabel(label);
+            charIndex = 0;
+        } else {
+            charIndex += 1;
+        }
+    }
+    RTFree(world, stringBuf);
+}
 
 void SCMage_Ctor(SCMage* unit) {
     void* mage_memory = RTAlloc(unit->mWorld, sizeof(MAGE::Mage));
     unit->mage = new(mage_memory) MAGE::Mage();
 
-    SCMage_alice(unit);
+    int bufnum = IN0(0);
+
+    // If the buffer number is negative, ignore it.
+    // Later on there will be other ways to push labels through OSC commands.
+    if (bufnum >= 0) {
+        if (bufnum > unit->mWorld->mNumSndBufs) {
+            if (unit->mWorld->mVerbosity > -2) {
+                Print("Invalid buffer number for SCMage\n");
+            }
+            SETCALC(ClearUnitOutputs);
+            return;
+        }
+        SndBuf* buf = unit->mWorld->mSndBufs + bufnum;
+        SCMage_pushLabelsFromSndBuf(unit->mWorld, buf, unit->mage);
+    }
 
     unit->freqValue = 0.0f;
     unit->freqAction = MAGE::noaction;
