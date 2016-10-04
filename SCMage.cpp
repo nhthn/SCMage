@@ -14,12 +14,21 @@ struct SCMage : public Unit {
     pthread_t thread;
 };
 
+static void SCMage_allocFailed(SCMage* unit);
 static void SCMage_next(SCMage* unit, int inNumSamples);
 static void SCMage_Ctor(SCMage* unit);
 static void* SCMage_genThread(void* argv);
-static void SCMage_pushLabelsFromSndBuf(World* world, SndBuf* buf, MAGE::Mage* mage);
+static bool SCMage_pushLabelsFromSndBuf(World* world, SndBuf* buf, MAGE::Mage* mage);
 
-void SCMage_pushLabelsFromSndBuf(World* world, SndBuf* buf, MAGE::Mage* mage) {
+void SCMage_allocFailed(SCMage* unit) {
+    SETCALC(ft->fClearUnitOutputs);
+    ClearUnitOutputs(unit, 1);
+    if (unit->mWorld->mVerbosity > -2) {
+        Print("Failed to allocate memory for SCMage ugen.\n");
+    }
+}
+
+bool SCMage_pushLabelsFromSndBuf(World* world, SndBuf* buf, MAGE::Mage* mage) {
     float* bufData = buf->data;
     int bufFrames = buf->frames;
     int bufChannels = buf->channels;
@@ -27,6 +36,12 @@ void SCMage_pushLabelsFromSndBuf(World* world, SndBuf* buf, MAGE::Mage* mage) {
 
     // Create an intermediate buffer for converting the first channel of the sound buf into chars.
     char* stringBuf = (char*)RTAlloc(world, sizeof(char) * MAGE::maxStrLen);
+
+    // If memory allocation failed, bail out.
+    if (!stringBuf) {
+        return false;
+    }
+
     // This is the current length of the intermediate string.
     int charIndex = 0;
     for (int bufIndex = 0; bufIndex < bufSamples; bufIndex += bufChannels) {
@@ -52,10 +67,16 @@ void SCMage_pushLabelsFromSndBuf(World* world, SndBuf* buf, MAGE::Mage* mage) {
         }
     }
     RTFree(world, stringBuf);
+    return true;
 }
 
 void SCMage_Ctor(SCMage* unit) {
     void* mage_memory = RTAlloc(unit->mWorld, sizeof(MAGE::Mage));
+    if (!mage_memory) {
+        SCMage_allocFailed(unit);
+        return;
+    }
+
     unit->mage = new(mage_memory) MAGE::Mage();
 
     int bufnum = IN0(0);
@@ -63,15 +84,25 @@ void SCMage_Ctor(SCMage* unit) {
     // If the buffer number is negative, ignore it.
     // Later on there will be other ways to push labels through OSC commands.
     if (bufnum >= 0) {
-        if (bufnum > unit->mWorld->mNumSndBufs) {
-            if (unit->mWorld->mVerbosity > -2) {
-                Print("Invalid buffer number for SCMage\n");
+        SndBuf* buf;
+        World* world = unit->mWorld;
+        if (bufnum >= world->mNumSndBufs) {
+            int localBufNum = bufnum - world->mNumSndBufs;
+            Graph *parent = unit->mParent;
+            if (localBufNum <= parent->localBufNum) {
+                buf = parent->mLocalSndBufs + localBufNum;
+            } else {
+                bufnum = 0;
+                buf = world->mSndBufs + bufnum;
             }
-            SETCALC(ClearUnitOutputs);
+        } else {
+            buf = world->mSndBufs + bufnum;
+        }
+        bool allocSucceeded = SCMage_pushLabelsFromSndBuf(world, buf, unit->mage);
+        if (!allocSucceeded) {
+            SCMage_allocFailed(unit);
             return;
         }
-        SndBuf* buf = unit->mWorld->mSndBufs + bufnum;
-        SCMage_pushLabelsFromSndBuf(unit->mWorld, buf, unit->mage);
     }
 
     unit->freqValue = 0.0f;
