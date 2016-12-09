@@ -1,6 +1,6 @@
 ## SCMage - EARLY STAGE OF DEVELOPMENT - USE AT YOUR OWN RISK! ##
 
-A SuperCollider plugin wrapping the MAGE/pHTS speech synthesizer.
+A SuperCollider plugin wrapping the MAGE/pHTS speech synthesizer. It is Linux only.
 
 ### Building and installing ###
 
